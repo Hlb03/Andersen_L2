@@ -27,7 +27,7 @@ public class Ticket {
         setCreationTime();
     }
 
-    public Ticket(String id, String concertHall, short eventCode, long unixTime, boolean isPromo, char stadiumSector,
+    public Ticket(String id, String concertHall, short eventCode, boolean isPromo, char stadiumSector,
                   float maxBackpackWeight,BigDecimal price) {
         this.id = id;
         this.concertHall = concertHall;

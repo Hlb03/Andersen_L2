@@ -14,7 +14,7 @@ public class TicketService {
         Ticket limitedTicket = new Ticket("Great Hall", (short) 101);
         System.out.println("Limited ticket: " + limitedTicket);
 
-        Ticket fullTicket = new Ticket("A1lP", "The smallest", (short) 299, 1717580801L, false,
+        Ticket fullTicket = new Ticket("A1lP", "The smallest", (short) 299, false,
                 'B', 10.5f, new BigDecimal("399.99"));
         System.out.println("Full ticket: " + fullTicket);
     }
