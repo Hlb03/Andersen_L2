@@ -32,7 +32,6 @@ public class Ticket {
         this.id = id;
         this.concertHall = concertHall;
         this.eventCode = eventCode;
-        this.unixTime = unixTime;
         this.isPromo = isPromo;
         this.stadiumSector = stadiumSector;
         this.maxBackpackWeight = maxBackpackWeight;
