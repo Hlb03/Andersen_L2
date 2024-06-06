@@ -33,8 +33,11 @@ public class TicketService {
                 'B', 10.5f, new BigDecimal("399.99"));
         System.out.println("Full ticket: " + fullTicket);
 
-        System.out.println(ticketStorage.get("8"));
+        System.out.println(getTicketById("8")); //example of calling a method to get Ticket by ID
     }
 
+    public static Ticket getTicketById(String ticketId) {
+        return ticketStorage.get(ticketId);
+    }
 
 }
