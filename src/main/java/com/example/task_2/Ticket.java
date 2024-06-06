@@ -42,7 +42,11 @@ public class Ticket {
 
     private void setCreationTime() {
         this.unixTime = LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
-    };
+    }
+
+    public char getStadiumSector() {
+        return stadiumSector;
+    }
 
     @Override
     public String toString() {
