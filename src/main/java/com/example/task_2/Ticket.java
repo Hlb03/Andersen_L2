@@ -12,7 +12,7 @@ public class Ticket {
     private short eventCode;
     private long unixTime;
     private boolean isPromo;
-    private char stadiumSector;
+    private String stadiumSector;
     private float maxBackpackWeight;
     private BigDecimal price;
 
@@ -27,8 +27,9 @@ public class Ticket {
         setCreationTime();
     }
 
-    public Ticket(String id, String concertHall, short eventCode, boolean isPromo, char stadiumSector,
+    public Ticket(String id, String concertHall, short eventCode, boolean isPromo, String stadiumSector,
                   float maxBackpackWeight,BigDecimal price) {
+        validateInputParams(id, concertHall, eventCode, stadiumSector);
         this.id = id;
         this.concertHall = concertHall;
         this.eventCode = eventCode;
@@ -39,10 +40,6 @@ public class Ticket {
 
         setCreationTime();
     }
-
-    private void setCreationTime() {
-        this.unixTime = LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
-    };
 
     @Override
     public String toString() {
@@ -56,5 +53,20 @@ public class Ticket {
                 ", maxBackpackWeight=" + maxBackpackWeight +
                 ", price=" + price +
                 '}';
+    }
+
+    private void validateInputParams(String id, String concertHall, short eventCode, String stadiumSector) {
+        if (id.length() > 4)
+            throw new IllegalArgumentException("Id param should contain less than 5 digits or chars");
+        if (concertHall.length() > 11)
+            throw new IllegalArgumentException("Concert hall max length is 10");
+        if (eventCode > 999)
+            throw new IllegalArgumentException("Max value for event code is 999");
+        if (!stadiumSector.matches("[A-C]"))
+            throw new IllegalArgumentException("Stadium sector could contain values from 'A' to 'C'");
+    }
+
+    private void setCreationTime() {
+        this.unixTime = LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
     }
 }
