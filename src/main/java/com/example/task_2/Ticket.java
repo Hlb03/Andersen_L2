@@ -12,7 +12,7 @@ public class Ticket {
     private short eventCode;
     private long unixTime;
     private boolean isPromo;
-    private char stadiumSector;
+    private String stadiumSector;
     private float maxBackpackWeight;
     private BigDecimal price;
 
@@ -27,8 +27,9 @@ public class Ticket {
         setCreationTime();
     }
 
-    public Ticket(String id, String concertHall, short eventCode, boolean isPromo, char stadiumSector,
+    public Ticket(String id, String concertHall, short eventCode, boolean isPromo, String stadiumSector,
                   float maxBackpackWeight,BigDecimal price) {
+        validateInputParams(id, concertHall, eventCode, stadiumSector); //validate basic task params
         this.id = id;
         this.concertHall = concertHall;
         this.eventCode = eventCode;
@@ -39,10 +40,6 @@ public class Ticket {
 
         setCreationTime();
     }
-
-    private void setCreationTime() {
-        this.unixTime = LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
-    };
 
     @Override
     public String toString() {
@@ -56,5 +53,20 @@ public class Ticket {
                 ", maxBackpackWeight=" + maxBackpackWeight +
                 ", price=" + price +
                 '}';
+    }
+
+    private void setCreationTime() {
+        this.unixTime = LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
+    }
+
+    private void validateInputParams(String id, String concertHall, short eventCode, String stadiumSector) {
+        if (id.length() > 4)
+            throw new IllegalArgumentException("Id param should contain less than 4 symbols/chars");
+        if (concertHall.length() > 10)
+            throw new IllegalArgumentException("Concert hall name should contain 10 chars maximum");
+        if (eventCode > 999)
+            throw new IllegalArgumentException("Even conde should contain only 3 digits");
+        if (!stadiumSector.matches("[A-C]"))
+            throw new IllegalArgumentException("Stadium sector name should be named from 'A' to 'C'");
     }
 }
