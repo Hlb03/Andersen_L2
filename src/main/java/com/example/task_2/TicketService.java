@@ -1,6 +1,10 @@
 package com.example.task_2;
 
 
+import com.example.task_2.users.Admin;
+import com.example.task_2.users.Client;
+import com.example.task_2.users.RolePrinter;
+
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
@@ -34,10 +38,32 @@ public class TicketService {
         System.out.println("Full ticket: " + fullTicket);
 
         System.out.println(getTicketById("8")); //example of calling a method to get Ticket by ID
+
+        //Homework_4
+        System.out.println(fullTicket.getId()); //example of getting method from parent class Identifier
+
+        fullTicket.print(); // calling Ticket-specific implementation of .print() method
+
+        fullTicket.shared("+0178948398"); //compile-time polymorphism
+        fullTicket.shared("+83782919289", "some@gmail.com"); //another one
+
+        RolePrinter client = new Client();
+        client.printRole(); //example of late binding (runtime polymorphism)
+
+        RolePrinter admin = new Admin();
+        admin.printRole(); // another example of runtime polymorphism
+
+        System.out.println(fullTicket.equals(limitedTicket)); //equals and hashCode methods were overrided for the previous homework as they are must have parts of HashMap usage
+        System.out.println(fullTicket.hashCode());
+
+        checkAnnotationUsage();
     }
 
     public static Ticket getTicketById(String ticketId) {
         return ticketStorage.get(ticketId);
     }
 
+    private static void checkAnnotationUsage() {
+
+    }
 }
