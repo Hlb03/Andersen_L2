@@ -3,6 +3,7 @@ package com.example.task_2;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.Objects;
 
 //There was nothing mentioned about getters + setters, so they are not present
 public class Ticket {
@@ -43,6 +44,19 @@ public class Ticket {
     private void setCreationTime() {
         this.unixTime = LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
     };
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Ticket ticket = (Ticket) o;
+        return Objects.equals(id, ticket.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 
     @Override
     public String toString() {
