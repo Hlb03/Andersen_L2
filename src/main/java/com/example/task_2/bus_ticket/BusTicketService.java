@@ -6,7 +6,11 @@ import java.util.List;
 
 public class BusTicketService {
 
-    private List<BusTicket> storage = new ArrayList<>();
+    private final List<BusTicket> storage = new ArrayList<>();
+
+    public void addTicket(BusTicket ticket) {
+        storage.add(ticket);
+    }
 
     public BusTicket getTicketById(String ticketId) {
         for (BusTicket ticket : storage)
