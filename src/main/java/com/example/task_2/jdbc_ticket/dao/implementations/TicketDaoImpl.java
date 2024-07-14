@@ -4,12 +4,14 @@ import com.example.task_2.jdbc_ticket.dao.TicketDAO;
 import com.example.task_2.jdbc_ticket.entity.Ticket;
 import com.example.task_2.jdbc_ticket.entity.TicketType;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 @RequiredArgsConstructor
 public class TicketDaoImpl implements TicketDAO {
 

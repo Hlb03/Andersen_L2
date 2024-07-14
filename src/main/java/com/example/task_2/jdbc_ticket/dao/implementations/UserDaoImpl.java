@@ -3,6 +3,7 @@ package com.example.task_2.jdbc_ticket.dao.implementations;
 import com.example.task_2.jdbc_ticket.dao.UserDAO;
 import com.example.task_2.jdbc_ticket.entity.User;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -10,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+@Component
 @RequiredArgsConstructor
 public class UserDaoImpl implements UserDAO {
 
