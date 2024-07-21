@@ -21,6 +21,7 @@
         <hibernate.version>6.5.2.Final</hibernate.version>
         <flyway.version>10.15.0</flyway.version>
         <flyway.postgres.version>10.8.1</flyway.postgres.version>
+        <spring.boot.test>3.3.0</spring.boot.test>
     </properties>
 
     <dependencies>
@@ -47,7 +48,6 @@
             <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>${hibernate.version}</version>
-            <version>${jakson.version}</version>
         </dependency>
         <dependency>
             <groupId>org.postgresql</groupId>
@@ -64,6 +64,29 @@
             <artifactId>flyway-database-postgresql</artifactId>
             <version>${flyway.postgres.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <version>${spring.boot.test}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <version>${spring.boot.test}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>${spring.boot.test}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13</version>
+            <scope>test</scope>
+        </dependency>
+
 
     </dependencies>
 
